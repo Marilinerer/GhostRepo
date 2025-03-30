@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class NPCSpawner : MonoBehaviour
 {
 
     public GameObject[] objectToSpawn;

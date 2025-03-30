@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPossession : MonoBehaviour
 {
     private GameObject possessedObject;
+    private CarMovement possessedCar;
     private bool isPossessing;
     private SpriteRenderer ghostRenderer; // For ghost visibility
 
@@ -15,7 +16,7 @@ public class PlayerPossession : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isPossessing)
             {
@@ -37,17 +38,21 @@ public class PlayerPossession : MonoBehaviour
             if (obj.CompareTag("Possessable"))
             {
                 possessedObject = obj.gameObject;
+                possessedCar = possessedObject.GetComponent<CarMovement>(); // Get CarMovement script
+
+                if (possessedCar != null)
+                {
+                    possessedCar.Possess(); // Stop the car when possessed
+                }
+
                 isPossessing = true;
+                ghostRenderer.enabled = false; // Hide the ghost
 
-                // Hide the ghost
-                ghostRenderer.enabled = false;
-
-                // Position the ghost inside the possessed object
+                // Move ghost inside the object
                 transform.position = possessedObject.transform.position;
 
-                // Optional: Disable ghost movement
+                // Disable ghost movement
                 GetComponent<PlayerController>().enabled = false;
-
                 break;
             }
         }
@@ -57,21 +62,25 @@ public class PlayerPossession : MonoBehaviour
     {
         if (possessedObject != null)
         {
-            // Set ghost's position to the possessed object's position
+            // Set ghost position to the possessed object's position
             transform.position = possessedObject.transform.position;
 
-            // Detach from the possessed object
+            // Stop possessing car
+            if (possessedCar != null)
+            {
+                possessedCar.Release(); // Resume car movement
+                possessedCar = null;
+            }
+
+            // Detach from the object
             possessedObject = null;
             isPossessing = false;
 
             // Make the ghost visible again
             ghostRenderer.enabled = true;
 
-            // Optional: Re-enable ghost movement
+            // Re-enable ghost movement
             GetComponent<PlayerController>().enabled = true;
         }
     }
-
-
-
 }
