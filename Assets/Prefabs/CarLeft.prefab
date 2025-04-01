@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 747639962126255271}
   - component: {fileID: 8495048107528242955}
   - component: {fileID: 3804568560672438768}
+  - component: {fileID: -2902625529231314347}
   - component: {fileID: 1841869332269102203}
   m_Layer: 0
   m_Name: CarLeft
@@ -116,7 +117,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -144,8 +145,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6fbccf169523440a160ce1ba439a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRight: 0
-  speed: 3
+  point1: {x: -11.3, y: -0.13}
+--- !u!114 &-2902625529231314347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458484007486269265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae558cad07a4f9d42a4fb46415d1e0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCspeed: 7
 --- !u!50 &1841869332269102203
 Rigidbody2D:
   serializedVersion: 4

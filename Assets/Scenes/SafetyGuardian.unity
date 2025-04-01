@@ -183,11 +183,11 @@ GameObject:
   - component: {fileID: 1059063996}
   - component: {fileID: 1059063994}
   - component: {fileID: 1059063995}
-  - component: {fileID: 1059063998}
   - component: {fileID: 1059063999}
+  - component: {fileID: 1059064000}
   m_Layer: 0
   m_Name: GhostPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6a4f0710cb01d42bf773dde8672787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  acceleration: 5
-  deceleration: 5
+  speed: 15
+  acceleration: 15
+  deceleration: 40
 --- !u!212 &1059063996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -301,18 +301,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059063998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059063993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb78c7e96df1274e97c073bb214f096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &1059063999
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -348,6 +336,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.0000001}
   m_Direction: 0
+--- !u!114 &1059064000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059063993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e175b975ec4940aa324f3d110f745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1094178494
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,12 +32,12 @@ public class CarSpawner : MonoBehaviour
     {
         GameObject newCar = Instantiate(carPrefab, transform.position, Quaternion.identity);
 
-        // Set the car's direction
+        /*// Set the car's direction
         CarMovement carScript = newCar.GetComponent<CarMovement>();
         if (carScript != null)
         {
             carScript.moveRight = spawnRightDirection;
-        }
+        }*/
 
         // Call the next spawn with a random interval
         Invoke(nameof(SpawnCar), Random.Range(minSpawnInterval, maxSpawnInterval));

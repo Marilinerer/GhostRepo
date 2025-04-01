@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPossession : MonoBehaviour
+/*ublic class PlayerPossession : MonoBehaviour
 {
     private GameObject possessedObject;
     private CarMovement possessedCar;
@@ -83,4 +83,4 @@ public class PlayerPossession : MonoBehaviour
             GetComponent<PlayerController>().enabled = true;
         }
     }
-}
+}*/

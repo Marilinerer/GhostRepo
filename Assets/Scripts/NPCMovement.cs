@@ -44,6 +44,8 @@ public class NPCMovement : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1.5f);
+
+            Destroy(gameObject);
         }
     }
 }

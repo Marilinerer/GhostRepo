@@ -4,58 +4,44 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    public bool moveRight = true; // Set in Inspector (true = right, false = left)
-    public float speed = 5f; // Fixed speed
+    public Vector2 point1;
+    private NPC npc;
+    private bool isPaused = false;
+    private float pauseTime = 3f;
+    private float pauseTimer = 0f;
 
-    private bool isPossessed = false; // Track possession
+    void Start()
+    {
+        npc = GetComponent<NPC>();
+    }
 
     void Update()
     {
-        if (!isPossessed) // Move only if NOT possessed
+        if (isPaused)
         {
-            float direction = moveRight ? 1f : -1f;
-            transform.position += Vector3.right * direction * speed * Time.deltaTime;
+            pauseTimer += Time.deltaTime;
+            if (pauseTimer >= pauseTime)
+            {
+                isPaused = false;
+                pauseTimer = 0f;
+            }
+        }
+        else if ((Vector2)transform.position != point1)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, point1, npc.NPCspeed * Time.deltaTime);
+        }
+
+        if ((Vector2)transform.position == point1)
+        {
+            Destroy(gameObject);
         }
     }
 
-    // Called when the ghost possesses the car
-    public void Possess()
+    public void OnPossess()
     {
-        if (!isPossessed)
-        {
-            isPossessed = true;
-            speed = 0; // Stop car movement
-            Debug.Log("CAR STOPS!!");
-        }
+        isPaused = true;
+        pauseTimer = 0f; // Reset the timer
     }
 
-    // Called when the ghost leaves the car
-    public void Release()
-    {
-        if (isPossessed)
-        {
-            isPossessed = false;
-            speed = 5f; // Resume movement
-            Debug.Log("CAR MOVES AGAIN!!");
-        }
-    }
-
-    // Called when a collision occurs with the car
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the car collides with the NPC (this will destroy both car and NPC)
-        if (collision.gameObject.CompareTag("NPC"))
-        {
-            Destroy(gameObject); // Destroy car
-            Destroy(collision.gameObject); // Destroy NPC
-            Debug.Log("DIEEEEE - NPC collision");
-        }
-
-        // Optional: Handle collisions with other objects here
-        else if (collision.gameObject.CompareTag("OtherObject"))
-        {
-            // Handle collision with other objects, e.g., apply damage or some effect
-            Debug.Log("Collided with OtherObject");
-        }
-    }
 }
+
