@@ -6,13 +6,4 @@ public class NPC : MonoBehaviour
 {
     public float NPCspeed;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarMovement : MonoBehaviour
+public class CarMovement : MonoBehaviour, IPossessable
 {
     public Vector2 point1;
     private NPC npc;
@@ -41,6 +41,16 @@ public class CarMovement : MonoBehaviour
     {
         isPaused = true;
         pauseTimer = 0f; // Reset the timer
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            print("GAME OVER");
+            Destroy(collision.gameObject);
+            //remove heart
+        }
     }
 
 }
