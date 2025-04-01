@@ -7,15 +7,21 @@ public class PlayerPossession : MonoBehaviour
     private GameObject possessedObject;
     private bool isPossessing;
     private SpriteRenderer ghostRenderer; // For ghost visibility
+    public CarMovement car;
 
     void Start()
     {
         ghostRenderer = GetComponent<SpriteRenderer>();
+
+        if (car == null)
+        {
+            car = FindObjectOfType<CarMovement>(); // Finds the CarMovement script in the scene if not manually set
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             if (isPossessing)
             {
@@ -25,10 +31,12 @@ public class PlayerPossession : MonoBehaviour
             {
                 TryToPossess();
             }
-        }
+        }*/
     }
 
-    private void TryToPossess()
+
+
+    /*private void TryToPossess()
     {
         // Find nearby objects with "Possessable" tag
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, 1f);
@@ -40,13 +48,15 @@ public class PlayerPossession : MonoBehaviour
                 isPossessing = true;
 
                 // Hide the ghost
-                ghostRenderer.enabled = false;
+                //ghostRenderer.enabled = false;
 
                 // Position the ghost inside the possessed object
                 transform.position = possessedObject.transform.position;
 
                 // Optional: Disable ghost movement
-                GetComponent<PlayerController>().enabled = false;
+                //GetComponent<PlayerController>().enabled = false;
+
+                car.PauseCar();
 
                 break;
             }
@@ -70,8 +80,6 @@ public class PlayerPossession : MonoBehaviour
             // Optional: Re-enable ghost movement
             GetComponent<PlayerController>().enabled = true;
         }
-    }
-
-
+    }*/
 
 }

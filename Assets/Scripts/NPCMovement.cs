@@ -12,7 +12,7 @@ public class NPCMovement : MonoBehaviour
     void Start()
     {
         StartCoroutine(CrossRoad());
-        //npc = FindObjectOfType<NPC>().GetComponent<NPC>();
+
     }
 
     // Update is called once per frame
@@ -44,6 +44,8 @@ public class NPCMovement : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1.5f);
+
+            Destroy(gameObject);
         }
     }
 }
