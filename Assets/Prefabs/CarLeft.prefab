@@ -146,6 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point1: {x: -11.3, y: -0.13}
+  cooldownTime: 3
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &-2902625529231314347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae558cad07a4f9d42a4fb46415d1e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCspeed: 7
+  npcSpeed: 0
+  carSpeed: 0
 --- !u!50 &1841869332269102203
 Rigidbody2D:
   serializedVersion: 4

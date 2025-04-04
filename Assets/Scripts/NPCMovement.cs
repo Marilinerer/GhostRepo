@@ -30,7 +30,7 @@ public class NPCMovement : MonoBehaviour
             // Move to point1
             while ((Vector2)transform.position != point1)
             {
-                transform.position = Vector2.MoveTowards(transform.position, point1, npc.NPCspeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, point1, npc.npcSpeed * Time.deltaTime);
                 yield return null;
             }
 
@@ -39,7 +39,7 @@ public class NPCMovement : MonoBehaviour
             // Move to point2
             while ((Vector2)transform.position != point2)
             {
-                transform.position = Vector2.MoveTowards(transform.position, point2, npc.NPCspeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, point2, npc.npcSpeed * Time.deltaTime);
                 yield return null;
             }
 
