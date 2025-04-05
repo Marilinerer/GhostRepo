@@ -40,9 +40,6 @@ public class NPCMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, point2, npc.npcSpeed * Time.deltaTime);
                 yield return null;
             }
-
-            yield return new WaitForSeconds(1.5f);
-
             Destroy(gameObject);
         }
     }

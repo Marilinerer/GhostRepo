@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CheckPoints : MonoBehaviour
+public class CloseCheckPoints : MonoBehaviour
 {
     private PointsSystem pointsSystem;
     public int pointsToAdd;
@@ -21,7 +21,7 @@ public class CheckPoints : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("NPC"))
         {

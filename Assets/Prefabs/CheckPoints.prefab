@@ -91,4 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsToAdd: 20
-  pointsPop: {fileID: 626523350367450436, guid: 046827863efd0ce459e8956a6cf8ec68, type: 3}
+  pointsPop: {fileID: 4993019740394129555, guid: 046827863efd0ce459e8956a6cf8ec68, type: 3}
+  generator: {fileID: 0}

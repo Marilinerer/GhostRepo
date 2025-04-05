@@ -90,5 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd57667ea178b9648a3327c5d6fe0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsSystem: {fileID: 0}
   pointsToAdd: 100
+  pointsPop: {fileID: 4993019740394129555, guid: 046827863efd0ce459e8956a6cf8ec68, type: 3}
+  generator: {fileID: 0}
