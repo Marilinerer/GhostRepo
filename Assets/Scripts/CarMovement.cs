@@ -14,6 +14,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     public float cooldownTime = 3f;
     private bool stopMovement = false;
     public LayerMask ignoreLayer;
+    public BoxCollider2D parentBC;
 
     void Start()
     {
@@ -68,7 +69,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("NPC"))
+        if (collision.gameObject.CompareTag("NPC") && parentBC.IsTouching(collision))
         {
             print("health down");
             Destroy(collision.gameObject);

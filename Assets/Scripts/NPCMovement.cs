@@ -12,10 +12,8 @@ public class NPCMovement : MonoBehaviour
     void Start()
     {
         StartCoroutine(CrossRoad());
-        //npc = FindObjectOfType<NPC>().GetComponent<NPC>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -34,7 +32,7 @@ public class NPCMovement : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(Random.Range(0.5f, 3f));
 
             // Move to point2
             while ((Vector2)transform.position != point2)

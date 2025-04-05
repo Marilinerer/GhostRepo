@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Possessable
   - NPC
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

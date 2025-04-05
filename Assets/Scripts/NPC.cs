@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour
 
     private void Start()
     {
-        npcSpeed = Random.Range(2, 6);
+        npcSpeed = Random.Range(2, 8);
         carSpeed = Random.Range(3, 8);
     }
 }

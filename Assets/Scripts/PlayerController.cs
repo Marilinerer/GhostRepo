@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;          // Movement speed
-    public float acceleration = 5f;  // Speed of acceleration
-    public float deceleration = 5f;  // Speed of deceleration
+    public float speed = 5f;
+    /*public float acceleration = 5f;
+    public float deceleration = 5f;
 
     private Rigidbody2D rb;
     private Vector2 currentVelocity; // Smooth velocity to apply
@@ -14,11 +14,25 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
+    }*/
 
     private void Update()
     {
-        float targetMoveX = 0f;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        // Calculate movement direction
+        Vector3 movement = new Vector3(horizontal, vertical, 0);
+
+        // Normalize the movement vector if it's not zero
+        if (movement.magnitude > 0)
+        {
+            movement = movement.normalized;
+        }
+
+        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+
+        /*float targetMoveX = 0f;
         float targetMoveY = 0f;
 
         // Check for input and set target velocity
@@ -33,6 +47,6 @@ public class PlayerController : MonoBehaviour
         currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, (targetVelocity.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime);
 
         // Apply the smoothed velocity to the Rigidbody
-        rb.velocity = currentVelocity;
+        rb.velocity = currentVelocity;*/
     }
 }

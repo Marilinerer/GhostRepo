@@ -7,11 +7,14 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     private Animator animator;
     public bool isPossessing;
     public bool isCooldown = false;
+    public Collider2D radiusCol;
 
     void Start()
     {
         isPossessing = false;
         animator = GetComponent<Animator>();
+        radiusCol = GetComponent<Collider2D>();
+        radiusCol.enabled = false;
     }
 
     public void OnPossess()
@@ -20,6 +23,8 @@ public class ObjectPossess : MonoBehaviour, IPossessable
 
         isPossessing = true;
         animator.SetBool("isPossessed", isPossessing);
+        radiusCol.enabled = true;
+
         Debug.Log("Possessed animation triggered.");
 
     }
@@ -30,6 +35,8 @@ public class ObjectPossess : MonoBehaviour, IPossessable
 
         isPossessing = false;
         animator.SetBool("isPossessed", isPossessing);
+        radiusCol.enabled = false;
+
         Debug.Log("cooldown animation triggered.");
     }
 
@@ -39,7 +46,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
 
         isPossessing = false;
         animator.SetBool("isPossessed", isPossessing);
-        Debug.Log("Cooldown reset and possessed animation stopped.");
 
+        Debug.Log("Cooldown reset and possessed animation stopped.");
     }
 }
