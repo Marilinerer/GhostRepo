@@ -21,15 +21,14 @@ public class PointsAnim : MonoBehaviour
 
         startPosition = transform.position;
 
-        StartCoroutine(Animation());
+        Animation();
     }
-    public IEnumerator Animation()
+    public void Animation()
     {
         Debug.Log("Animation started: " + gameObject.name);
         MoveAlongCurveWithRandomHeight();
         LeanTween.alpha(gameObject, 1, fadeDuration).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.scale(gameObject, new Vector3(scaleUpSize, scaleUpSize, 0.003f), scaleDuration).setEase(LeanTweenType.easeInOutQuad);
-        yield return new WaitForSeconds(0.2f);
         LeanTween.alpha(gameObject, 0, fadeDuration).setDelay(scaleDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             Destroy(gameObject);

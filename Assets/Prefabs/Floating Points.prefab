@@ -120,7 +120,7 @@ MonoBehaviour:
   fadeDuration: 0.2
   moveDuration: 0.4
   horizontalDistance: 1
-  baseVerticalHeight: 1.5
+  baseVerticalHeight: 1
   randomHeightRange: 0.5
 --- !u!1 &7587807489337423169
 GameObject:
