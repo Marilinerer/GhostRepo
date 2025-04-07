@@ -10,6 +10,10 @@ public class CloseCheckPoints : MonoBehaviour
     public int pointsToAdd;
     public Canvas pointsPop;
     private PointsPopGenerator generator;
+    private bool hasTriggered = false;
+
+    private float timeInsideTrigger = 0f;
+    public float requiredStayTime = 1f;
 
     void Start()
     {
@@ -21,12 +25,37 @@ public class CloseCheckPoints : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC") && !hasTriggered)
+        {
+            timeInsideTrigger += Time.deltaTime; // Increment time
+
+            if (timeInsideTrigger >= requiredStayTime)
+            {
+                pointsSystem.AddPoints(pointsToAdd);
+                generator.PointsPopUpClose(collision.transform.position, pointsToAdd.ToString());
+                hasTriggered = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("NPC"))
+        if (collision.CompareTag("NPC"))
         {
-            pointsSystem.AddPoints(pointsToAdd);
-            generator.PointsPopUp(collision.transform.position, pointsToAdd.ToString());
+            timeInsideTrigger = 0f;
+            hasTriggered = false;
         }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            timeInsideTrigger = 0f;
+        }
+
     }
 }

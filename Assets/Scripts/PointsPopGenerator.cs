@@ -8,6 +8,7 @@ public class PointsPopGenerator : MonoBehaviour
 {
     public static PointsPopGenerator current;
     public GameObject popUp;
+    public GameObject popUpClose;
 
     void Start()
     {
@@ -27,6 +28,17 @@ public class PointsPopGenerator : MonoBehaviour
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         temp.text = text;
 
-        Destroy(popup, 1f);
+        //Destroy(popup, 1f);
+    }
+
+    public void PointsPopUpClose(Vector3 position, string text)
+    {
+        Debug.Log("PointsPopUp Called!");
+
+        var popup = Instantiate(popUpClose, position, Quaternion.identity);
+        var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        temp.text = text;
+
+        //Destroy(popup, 1f);
     }
 }

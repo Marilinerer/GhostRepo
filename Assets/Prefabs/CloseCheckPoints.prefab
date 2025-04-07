@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1645621170590986591}
   - component: {fileID: 3271939417239457111}
   - component: {fileID: 6635195175180371557}
+  - component: {fileID: -5128519477421468550}
   m_Layer: 0
   m_Name: CloseCheckPoints
   m_TagString: Checkpoint
@@ -85,11 +86,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8021798955329572191}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd57667ea178b9648a3327c5d6fe0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointsToAdd: 100
   pointsPop: {fileID: 4993019740394129555, guid: 046827863efd0ce459e8956a6cf8ec68, type: 3}
-  generator: {fileID: 0}
+--- !u!114 &-5128519477421468550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021798955329572191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18b6e23369f0f346900661c7dde18d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsToAdd: 100
+  pointsPop: {fileID: 4993019740394129555, guid: dc14589333663f6458198a810f5b273a, type: 3}
+  requiredStayTime: 0.5

@@ -27,8 +27,9 @@ public class PointsAnim : MonoBehaviour
     {
         Debug.Log("Animation started: " + gameObject.name);
         MoveAlongCurveWithRandomHeight();
-        LeanTween.alpha(gameObject, 1, fadeDuration).setEase(LeanTweenType.easeInOutQuad);
+        // LeanTween.alphaVertex(gameObject, 1, fadeDuration).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.scale(gameObject, new Vector3(scaleUpSize, scaleUpSize, 0.003f), scaleDuration).setEase(LeanTweenType.easeInOutQuad);
+        LeanTween.scale(gameObject, new Vector3(0f, 0f, 0.003f), scaleDuration).setDelay(0.3f).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.alpha(gameObject, 0, fadeDuration).setDelay(scaleDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             Destroy(gameObject);

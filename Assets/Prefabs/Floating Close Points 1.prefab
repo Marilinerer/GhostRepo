@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6070519004450274011}
   - component: {fileID: 4978003249052760690}
   m_Layer: 5
-  m_Name: Floating Points
+  m_Name: Floating Close Points 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 5959284360530901683}
   - component: {fileID: 4795357074813994598}
   m_Layer: 5
-  m_Name: Points
+  m_Name: Close Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,12 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3f7f8b81e846a4bb5a4969470563bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleUpSize: 0.06
+  scaleUpSize: 0.08
   scaleDuration: 0.2
   fadeDuration: 0.4
   moveDuration: 0.4
-  horizontalDistance: 0.5
-  baseVerticalHeight: 1
+  horizontalDistance: 1
+  baseVerticalHeight: 1.2
   randomHeightRange: 0.5
 --- !u!114 &4795357074813994598
 MonoBehaviour:
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278204415
+  m_fontColor: {r: 1, g: 0.21734606, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
