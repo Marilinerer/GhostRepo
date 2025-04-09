@@ -13,7 +13,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     {
         isPossessing = false;
         animator = GetComponent<Animator>();
-        radiusCol = GetComponent<Collider2D>();
+        // radiusCol = GetComponent<Collider2D>();
         radiusCol.enabled = false;
     }
 

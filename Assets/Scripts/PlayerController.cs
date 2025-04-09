@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
+    public SpriteRenderer spriteRenderer;
     /*public float acceleration = 5f;
     public float deceleration = 5f;
 
@@ -32,6 +33,14 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
+        if (horizontal < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontal > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
         /*float targetMoveX = 0f;
         float targetMoveY = 0f;
 

@@ -22,7 +22,7 @@ public class PointsPopGenerator : MonoBehaviour
 
     public void PointsPopUp(Vector3 position, string text)
     {
-        Debug.Log("PointsPopUp Called!");
+        //Debug.Log("PointsPopUp Called!");
 
         var popup = Instantiate(popUp, position, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -33,7 +33,7 @@ public class PointsPopGenerator : MonoBehaviour
 
     public void PointsPopUpClose(Vector3 position, string text)
     {
-        Debug.Log("PointsPopUp Called!");
+        //Debug.Log("ClosePointsPopUp Called!");
 
         var popup = Instantiate(popUpClose, position, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

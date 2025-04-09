@@ -14,6 +14,7 @@ public class PointsAnim : MonoBehaviour
     public float randomHeightRange;
 
     private Vector3 startPosition;
+    public GameObject parent;
 
     void Start()
     {
@@ -25,14 +26,14 @@ public class PointsAnim : MonoBehaviour
     }
     public void Animation()
     {
-        Debug.Log("Animation started: " + gameObject.name);
+        //Debug.Log("Animation started: " + gameObject.name);
         MoveAlongCurveWithRandomHeight();
         // LeanTween.alphaVertex(gameObject, 1, fadeDuration).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.scale(gameObject, new Vector3(scaleUpSize, scaleUpSize, 0.003f), scaleDuration).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.scale(gameObject, new Vector3(0f, 0f, 0.003f), scaleDuration).setDelay(0.3f).setEase(LeanTweenType.easeInOutQuad);
         LeanTween.alpha(gameObject, 0, fadeDuration).setDelay(scaleDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-            Destroy(gameObject);
+            Destroy(parent);
         });
     }
 
@@ -58,7 +59,7 @@ public class PointsAnim : MonoBehaviour
             .setEase(LeanTweenType.easeInOutQuad) // Smooth easing for natural feel
             .setOnComplete(() =>
             {
-                Debug.Log("Finished the curve movement!");
+                //Debug.Log("Finished the curve movement!");
                 // Add additional behavior after completion if needed
             });
     }

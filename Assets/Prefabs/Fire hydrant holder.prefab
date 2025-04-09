@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8573208824780860320}
+  - component: {fileID: 7164641241843632761}
   m_Layer: 0
   m_Name: Fire hydrant holder
   m_TagString: Untagged
@@ -32,6 +33,41 @@ Transform:
   - {fileID: 4860832440971269436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7164641241843632761
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384268166635802042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.023606736, y: -0.18885651}
+  serializedVersion: 2
+  m_Radius: 3.6675959
 --- !u!1 &5045516227719252631
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,12 +423,11 @@ GameObject:
   - component: {fileID: 4860832440971269436}
   - component: {fileID: 2149999585018264118}
   - component: {fileID: 6266071731651575965}
-  - component: {fileID: 6441692201063378045}
   - component: {fileID: 2179234459031005187}
   - component: {fileID: 3901777954755108445}
   m_Layer: 0
   m_Name: Fire hydrant
-  m_TagString: Possessable
+  m_TagString: ObjCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -435,7 +470,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 596cbfa499bc5e842b473b21db4fc081, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -481,42 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPossessing: 0
   isCooldown: 0
-  radiusCol: {fileID: 6441692201063378045}
---- !u!58 &6441692201063378045
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5744300839886433276}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.023606736, y: -0.18885651}
-  serializedVersion: 2
-  m_Radius: 3.6675959
+  radiusCol: {fileID: 7164641241843632761}
 --- !u!61 &2179234459031005187
 BoxCollider2D:
   m_ObjectHideFlags: 0
