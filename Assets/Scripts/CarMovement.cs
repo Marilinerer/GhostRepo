@@ -36,19 +36,24 @@ public class CarMovement : MonoBehaviour, IPossessable
 
     void Update()
     {
-        if (applySineMovement)
-        {
-            Vector2 v = rb.velocity;
-            v.y = mag * Mathf.Sin(freq * Time.time);
-            rb.velocity = v;
-        }
-
         if (!stopMovement)
         {
+
+            Vector2 v = rb.velocity;
+
+            if (applySineMovement)
+            {
+                v.y = mag * Mathf.Sin(freq * Time.time);
+            }
+            else 
+            {
+                v.y = 0;
+            }
+
             if (isPossessed)
             {
-                rb.velocity = Vector2.zero;
-
+                v.x = 0;
+               
                 /*pauseTimer += Time.deltaTime;
                 if (pauseTimer >= pauseTime)
                 {
@@ -61,14 +66,14 @@ public class CarMovement : MonoBehaviour, IPossessable
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     sr.flipX = true;
-                    rb.velocity = new Vector2(-npc.carSpeed, 0); // Move left
+                    v.x = -npc.carSpeed; // Move left
                     isPossessed = false;
                     //Debug.Log("Possessed, changed to left");
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
                     sr.flipX = false;
-                    rb.velocity = new Vector2(npc.carSpeed, 0); // Move right
+                    v.x = npc.carSpeed; // Move right
                     isPossessed = false;
                     //Debug.Log("Possessed, changed to right");
                 }
@@ -76,8 +81,11 @@ public class CarMovement : MonoBehaviour, IPossessable
             else
             {
                 isPossessed = false;
-                rb.velocity = sr.flipX ? new Vector2(-npc.carSpeed, 0) : new Vector2(npc.carSpeed, 0);
+                v.x = sr.flipX ? -npc.carSpeed : npc.carSpeed;
             }
+
+            rb.velocity = v;
+            
             /*else if ((Vector2)transform.position != point1)
             {
                 transform.position = Vector2.MoveTowards(transform.position, point1, npc.carSpeed * Time.deltaTime);
@@ -154,9 +162,9 @@ public class CarMovement : MonoBehaviour, IPossessable
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
-        if (collision.gameObject.CompareTag("ObjRadius"))
+        if (collision.gameObject.CompareTag("ObjRadius") || collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(DelayResume(1));
+            StartCoroutine(DelayResume(0.8f));
         }
     }
 

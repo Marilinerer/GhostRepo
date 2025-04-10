@@ -8,7 +8,9 @@ public class CarSpawner : MonoBehaviour
     public float minSpawnInterval = 0.25f; // Minimum time between spawns
     public float maxSpawnInterval = 3f; // Maximum time between spawns
     //public bool spawnRightDirection = true; // Set direction in Inspector
-
+    
+    private float timer = 0;
+    public float whenToActivate;
     private Vector3 spawnPosition;
     public bool spawnCar = true;
 
@@ -26,7 +28,25 @@ public class CarSpawner : MonoBehaviour
          transform.position = spawnPosition;*/
 
         // Start spawning with a random interval
-        Invoke(nameof(SpawnCar), Random.Range(minSpawnInterval, maxSpawnInterval));
+        if (spawnCar)
+        {
+            Invoke(nameof(SpawnCar), Random.Range(minSpawnInterval, maxSpawnInterval));
+        }
+    }
+
+    private void Update()
+    {
+        if (!spawnCar)
+        {
+            timer += Time.deltaTime;
+
+            if(timer >= whenToActivate) 
+            {
+                spawnCar = true;
+                timer = 0;
+                Invoke(nameof(SpawnCar), Random.Range(minSpawnInterval, maxSpawnInterval));
+            }
+        }
     }
 
     void SpawnCar()
@@ -45,5 +65,3 @@ public class CarSpawner : MonoBehaviour
         Invoke(nameof(SpawnCar), Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 }
-
-

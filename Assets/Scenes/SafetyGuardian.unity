@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744300839886433276, guid: 09bb9516d96767c4cb38e9f6b00fbec5, type: 3}
       propertyPath: m_TagString
-      value: GameController
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8140850883361457338, guid: 09bb9516d96767c4cb38e9f6b00fbec5, type: 3}
       propertyPath: m_Creator
@@ -519,7 +519,8 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: ce9bcbcfd92343d409dd6ecd5937c727, type: 3}
   minSpawnInterval: 2
   maxSpawnInterval: 10
-  spawnCar: 0
+  whenToActivate: 0
+  spawnCar: 1
 --- !u!4 &398337271
 Transform:
   m_ObjectHideFlags: 0
@@ -1041,10 +1042,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 398337271}
-  - {fileID: 1463366022}
+  - {fileID: 2065127864}
   - {fileID: 1350891840}
   - {fileID: 999555401}
-  - {fileID: 2065127864}
+  - {fileID: 1463366022}
   - {fileID: 1059046652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1056,6 +1057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1149450984482060345, guid: de674f7e7a85da142a51aec2040bb382, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1651093769975860237, guid: de674f7e7a85da142a51aec2040bb382, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.53
@@ -1255,7 +1260,8 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: b40f52e5aa29e8249aa3f20470217821, type: 3}
   minSpawnInterval: 5
   maxSpawnInterval: 10
-  spawnCar: 1
+  whenToActivate: 60
+  spawnCar: 0
 --- !u!1 &1012151803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1439,8 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: fda3c8b020d64b147a45c011a8cb88b3, type: 3}
   minSpawnInterval: 10
   maxSpawnInterval: 17
-  spawnCar: 1
+  whenToActivate: 100
+  spawnCar: 0
 --- !u!1 &1059063993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1523,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 596cbfa499bc5e842b473b21db4fc081, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1557,7 +1564,7 @@ Transform:
   m_GameObject: {fileID: 1059063993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.74, y: 0.38, z: -1}
+  m_LocalPosition: {x: -5.36, y: 1.63, z: -1}
   m_LocalScale: {x: 0.77019, y: 0.77019, z: 0.77019}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1732,7 +1739,8 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: 4047be877b4caf1468a326d1aae5abdb, type: 3}
   minSpawnInterval: 5
   maxSpawnInterval: 10
-  spawnCar: 1
+  whenToActivate: 60
+  spawnCar: 0
 --- !u!1001 &1396606111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1837,6 +1845,7 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: 172a22ffaefb46c4e9b254bf6b384946, type: 3}
   minSpawnInterval: 8
   maxSpawnInterval: 15
+  whenToActivate: 100
   spawnCar: 0
 --- !u!1 &1467928267
 GameObject:
@@ -3044,7 +3053,8 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: 8878d739f3df8d14b927a6d8f6c883e7, type: 3}
   minSpawnInterval: 5
   maxSpawnInterval: 15
-  spawnCar: 0
+  whenToActivate: 0
+  spawnCar: 1
 --- !u!4 &2065127864
 Transform:
   m_ObjectHideFlags: 0

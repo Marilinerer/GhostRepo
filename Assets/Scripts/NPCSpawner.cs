@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
 {
-
     public GameObject[] objectToSpawn;
     [SerializeField] private float spawnRate;
     [SerializeField] private bool canSpawn = true;
@@ -18,7 +17,7 @@ public class NPCSpawner : MonoBehaviour
 
     void Update()
     {
-
+       
     }
 
     private IEnumerator Spawn()
