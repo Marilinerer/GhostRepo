@@ -14,6 +14,13 @@ public class PossessDetect : MonoBehaviour
         {
             nearbyPossessable = possessable; // Store reference
         }
+
+        SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            Material mat = sr.material;
+            mat.SetFloat("_OutlineThickness", 0.05f);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -24,6 +31,9 @@ public class PossessDetect : MonoBehaviour
         {
             nearbyPossessable = null;
         }
+        SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
+        Material mat = sr.material;
+        mat.SetFloat("_OutlineThickness", 0);
     }
 
     void Update()

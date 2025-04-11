@@ -40,6 +40,7 @@ public class NPCMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, point2, npc.npcSpeed * Time.deltaTime);
                 yield return null;
             }
+            NPCCounter.Instance.NPCReachedPoint2();
             Destroy(gameObject);
         }
     }

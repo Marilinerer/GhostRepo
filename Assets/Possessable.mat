@@ -64,7 +64,7 @@ Material:
     m_Floats:
     - _LineThickness: 0.02
     - _Outline: 1
-    - _OutlineThickness: 0.005
+    - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Use8Directions: 1

@@ -18,6 +18,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     private bool stopMovement = false;
     public LayerMask ignoreLayer;
     public BoxCollider2D parentBC;
+    public bool isGameOver = false;
 
     public bool applySineMovement;
     private float mag;
@@ -45,7 +46,7 @@ public class CarMovement : MonoBehaviour, IPossessable
             {
                 v.y = mag * Mathf.Sin(freq * Time.time);
             }
-            else 
+            else
             {
                 v.y = 0;
             }
@@ -53,7 +54,7 @@ public class CarMovement : MonoBehaviour, IPossessable
             if (isPossessed)
             {
                 v.x = 0;
-               
+
                 /*pauseTimer += Time.deltaTime;
                 if (pauseTimer >= pauseTime)
                 {
@@ -85,7 +86,7 @@ public class CarMovement : MonoBehaviour, IPossessable
             }
 
             rb.velocity = v;
-            
+
             /*else if ((Vector2)transform.position != point1)
             {
                 transform.position = Vector2.MoveTowards(transform.position, point1, npc.carSpeed * Time.deltaTime);
@@ -128,13 +129,8 @@ public class CarMovement : MonoBehaviour, IPossessable
         {
             print("health down");
             Destroy(collision.gameObject);
+            NPCCounter.Instance.CarCrashed();
             HeartManager.health--;
-
-            if (HeartManager.health <= 0)
-            {
-                // Handle game over logic here
-                Debug.Log("GAME OVER");
-            }
         }
 
         if (collision.gameObject.CompareTag("ObjCollider") && parentBC.IsTouching(collision))
@@ -143,6 +139,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
             stopMovement = true;
             Debug.Log("destroyed, collided with " + collision.gameObject.name);
+            NPCCounter.Instance.CarCrashed();
             StartCoroutine(DelayDestroy(0.5f));
 
         }
