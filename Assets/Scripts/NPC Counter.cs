@@ -12,6 +12,11 @@ public class NPCCounter : MonoBehaviour
     public TextMeshProUGUI npcCountText;
     public TextMeshProUGUI carCrashCountText;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         npcCounter = 0;

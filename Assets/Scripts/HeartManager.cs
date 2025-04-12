@@ -9,17 +9,42 @@ public class HeartManager : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Animator heartAnimator;
+
+    private void Start()
+    {
+        health = 3;
+    }
 
     void Update()
     {
-        foreach (Image img in hearts)
+        /* foreach (Image img in hearts)
+         {
+             img.sprite = emptyHeart;
+         }
+
+         for (int i = 0; i < health; i++)
+         {
+             hearts[i].sprite = fullHeart;
+         }*/
+    }
+    public void LoseHeart()
+    {
+        if (health < 1)
         {
-            img.sprite = emptyHeart;
+            heartAnimator.SetTrigger("LoseHeart1");
         }
 
-        for (int i = 0; i < health; i++)
+        else if (health < 2)
         {
-            hearts[i].sprite = fullHeart;
+            heartAnimator.SetTrigger("LoseHeart2");
+        }
+
+        else if (health < 3)
+        {
+            heartAnimator.SetTrigger("LoseHeart3");
         }
     }
+
+
 }

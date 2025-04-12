@@ -19,6 +19,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     public LayerMask ignoreLayer;
     public BoxCollider2D parentBC;
     public bool isGameOver = false;
+    private HeartManager heartManager;
 
     public bool applySineMovement;
     private float mag;
@@ -33,6 +34,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
         mag = Random.Range(2f, 11f);
         freq = Random.Range(2f, 13f);
+        heartManager = FindObjectOfType<HeartManager>().GetComponent<HeartManager>();
     }
 
     void Update()
@@ -131,6 +133,8 @@ public class CarMovement : MonoBehaviour, IPossessable
             Destroy(collision.gameObject);
             NPCCounter.Instance.CarCrashed();
             HeartManager.health--;
+            heartManager.LoseHeart();
+
         }
 
         if (collision.gameObject.CompareTag("ObjCollider") && parentBC.IsTouching(collision))
@@ -138,7 +142,7 @@ public class CarMovement : MonoBehaviour, IPossessable
             if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
 
             stopMovement = true;
-            Debug.Log("destroyed, collided with " + collision.gameObject.name);
+            //Debug.Log("destroyed, collided with " + collision.gameObject.name);
             NPCCounter.Instance.CarCrashed();
             StartCoroutine(DelayDestroy(0.5f));
 
@@ -161,7 +165,7 @@ public class CarMovement : MonoBehaviour, IPossessable
         if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
         if (collision.gameObject.CompareTag("ObjRadius") || collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(DelayResume(0.8f));
+            StartCoroutine(DelayResume(0.6f));
         }
     }
 

@@ -8,9 +8,14 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     public bool isPossessing;
     public bool isCooldown = false;
     public Collider2D radiusCol;
+    public Material outlineMat;
+    public Material defaultMat;
+    private SpriteRenderer sr;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        sr.material = outlineMat;
         isPossessing = false;
         animator = GetComponent<Animator>();
         // radiusCol = GetComponent<Collider2D>();
@@ -21,6 +26,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     {
         if (isCooldown) return;
 
+        sr.material = defaultMat;
         isPossessing = true;
         animator.SetBool("isPossessed", isPossessing);
         radiusCol.enabled = true;
@@ -46,6 +52,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
 
         isPossessing = false;
         animator.SetBool("isPossessed", isPossessing);
+        sr.material = outlineMat;
 
         Debug.Log("Cooldown reset and possessed animation stopped.");
     }

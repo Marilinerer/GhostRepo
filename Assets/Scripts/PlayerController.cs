@@ -58,4 +58,15 @@ public class PlayerController : MonoBehaviour
         // Apply the smoothed velocity to the Rigidbody
         rb.velocity = currentVelocity;*/
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerWall"))
+        {
+            LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f, 1), 0.3f).setEaseInOutExpo().setOnComplete(() =>
+            {
+                LeanTween.scale(gameObject, new Vector3(1f, 1f, 1), 0.2f).setEaseInOutExpo();
+            });
+        }
+    }
 }

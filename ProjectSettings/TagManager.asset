@@ -10,6 +10,7 @@ TagManager:
   - ObjCollider
   - ObjRadius
   - CarBorder
+  - PlayerWall
   layers:
   - Default
   - TransparentFX

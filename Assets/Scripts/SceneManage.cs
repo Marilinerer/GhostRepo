@@ -14,6 +14,8 @@ public class SceneManage : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        isPaused = false;
+        gameOverPanel.SetActive(false);
         //audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
@@ -66,14 +68,12 @@ public class SceneManage : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f);
 
-        Time.timeScale = 1f;
-        isPaused = false;
-
         //audioManager.PlaySFXByIndex(7);
         yield return new WaitForSecondsRealtime(0.2f);
 
         SceneManager.LoadScene(sceneName);
-
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void ReloadSceneWithDelay()
@@ -86,13 +86,12 @@ public class SceneManage : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.5f);
 
-        Time.timeScale = 1f;
-        isPaused = false;
-
         //audioManager.PlaySFXByIndex(8);
         yield return new WaitForSecondsRealtime(0.2f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        Time.timeScale = 1f;
+        isPaused = false;
+        gameOverPanel.SetActive(false);
     }
 }

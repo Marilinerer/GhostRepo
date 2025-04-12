@@ -19,6 +19,8 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
     private bool stopMovement = false;
     public LayerMask ignoreLayer;
     public BoxCollider2D parentBC;
+    public bool isGameOver = false;
+    private HeartManager heartManager;
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         //isCooldown = false;
 
         rb = GetComponent<Rigidbody2D>();
-
+        heartManager = FindObjectOfType<HeartManager>().GetComponent<HeartManager>();
     }
 
     void Update()
@@ -110,12 +112,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
             print("health down");
             Destroy(collision.gameObject);
             HeartManager.health--;
-
-            if (HeartManager.health <= 0)
-            {
-                // Handle game over logic here
-                Debug.Log("GAME OVER");
-            }
+            heartManager.LoseHeart();
         }
 
         if (collision.gameObject.CompareTag("ObjCollider"))
@@ -124,6 +121,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
 
             stopMovement = true;
             //Debug.Log("destroyed, collided with " + collision.gameObject.name);
+            NPCCounter.Instance.CarCrashed();
             StartCoroutine(DelayDestroy(0.5f));
 
         }
@@ -144,7 +142,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
         if (collision.gameObject.CompareTag("ObjRadius"))
         {
-            StartCoroutine(DelayResume(1));
+            StartCoroutine(DelayResume(0.6f));
         }
     }
 

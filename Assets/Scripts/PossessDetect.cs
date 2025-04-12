@@ -19,7 +19,7 @@ public class PossessDetect : MonoBehaviour
         if (sr != null)
         {
             Material mat = sr.material;
-            mat.SetFloat("_OutlineThickness", 0.05f);
+            mat.SetFloat("_OutlineThickness", 0.1f);
         }
     }
 
