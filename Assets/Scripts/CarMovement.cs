@@ -10,7 +10,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     private Rigidbody2D rb;
     public SpriteRenderer sr;
     public Vector2 movementDirection;
-    private bool isPossessed = false;
+    public bool isPossessed = false;
     //private float pauseTime = 1f;
     //private float pauseTimer = 0f;
     //private bool isCooldown = false;
@@ -168,7 +168,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
+        //if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
         if (collision.gameObject.CompareTag("ObjRadius") || collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(DelayResume(0.5f));

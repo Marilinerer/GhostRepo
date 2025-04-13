@@ -59,13 +59,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = currentVelocity;*/
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerWall"))
         {
-            LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f, 1), 0.3f).setEaseInOutExpo().setOnComplete(() =>
+            LeanTween.scale(gameObject, new Vector3(.85f, .85f, 1), 0.2f).setEaseInOutExpo().setOnComplete(() =>
             {
-                LeanTween.scale(gameObject, new Vector3(1f, 1f, 1), 0.2f).setEaseInOutExpo();
+                LeanTween.scale(gameObject, new Vector3(0.7f, 0.7f, 0.7f), 0.1f).setEaseInOutExpo();
             });
         }
     }
