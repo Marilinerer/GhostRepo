@@ -24,6 +24,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     public bool applySineMovement;
     private float mag;
     private float freq;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class CarMovement : MonoBehaviour, IPossessable
         mag = Random.Range(2f, 11f);
         freq = Random.Range(2f, 13f);
         heartManager = FindObjectOfType<HeartManager>().GetComponent<HeartManager>();
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     void Update()
@@ -129,6 +131,8 @@ public class CarMovement : MonoBehaviour, IPossessable
     {
         if (collision.gameObject.CompareTag("NPC") && parentBC.IsTouching(collision))
         {
+            audioManager.PlaySFXByIndex(6); // oof sfx
+            audioManager.PlaySFXByIndex(2); // car crash sfx
             print("health down");
             Destroy(collision.gameObject);
             NPCCounter.Instance.CarCrashed();
@@ -143,6 +147,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
             stopMovement = true;
             //Debug.Log("destroyed, collided with " + collision.gameObject.name);
+            audioManager.PlaySFXByIndex(1); // car hit sfx
             NPCCounter.Instance.CarCrashed();
             StartCoroutine(DelayDestroy(0.5f));
 
@@ -150,6 +155,7 @@ public class CarMovement : MonoBehaviour, IPossessable
 
         if (collision.gameObject.CompareTag("ObjRadius"))
         {
+            audioManager.PlaySFXByIndex(0); // car horn sfx
             stopMovement = true;
         }
 
@@ -165,7 +171,7 @@ public class CarMovement : MonoBehaviour, IPossessable
         if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
         if (collision.gameObject.CompareTag("ObjRadius") || collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(DelayResume(0.6f));
+            StartCoroutine(DelayResume(0.5f));
         }
     }
 

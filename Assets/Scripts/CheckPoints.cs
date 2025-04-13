@@ -10,6 +10,8 @@ public class CheckPoints : MonoBehaviour
     public int pointsToAdd;
     public Canvas pointsPop;
     private PointsPopGenerator generator;
+    private AudioManager audioManager;
+    public bool playDing = false;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class CheckPoints : MonoBehaviour
         {
             Debug.Log("Cannot find points system");
         }
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -27,6 +30,10 @@ public class CheckPoints : MonoBehaviour
         {
             pointsSystem.AddPoints(pointsToAdd);
             generator.PointsPopUp(collision.transform.position, pointsToAdd.ToString());
+            if (playDing)
+            {
+                audioManager.PlaySFXByIndex(10); // ding sfx
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     public Material outlineMat;
     public Material defaultMat;
     private SpriteRenderer sr;
-
+    private AudioManager audioManager;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -20,12 +20,14 @@ public class ObjectPossess : MonoBehaviour, IPossessable
         animator = GetComponent<Animator>();
         // radiusCol = GetComponent<Collider2D>();
         radiusCol.enabled = false;
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     public void OnPossess()
     {
         if (isCooldown) return;
 
+        audioManager.PlaySFXByIndex(7); // ghost possess sfx
         sr.material = defaultMat;
         isPossessing = true;
         animator.SetBool("isPossessed", isPossessing);
@@ -55,5 +57,15 @@ public class ObjectPossess : MonoBehaviour, IPossessable
         sr.material = outlineMat;
 
         Debug.Log("Cooldown reset and possessed animation stopped.");
+    }
+
+    private void PlayHydrantSFX() // Played in animation event
+    {
+        audioManager.PlaySFXByIndex(9); // Hydrant sfx
+    }
+
+    private void PlayLampSFX() // Played in animation event
+    {
+        audioManager.PlaySFXByIndex(5); // Lamp post sfx
     }
 }

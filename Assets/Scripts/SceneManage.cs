@@ -9,14 +9,15 @@ public class SceneManage : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject gameOverPanel;
-    //private AudioManager audioManager;
+    private AudioManager audioManager;
+    private bool gameOver = false;
 
     void Start()
     {
         Time.timeScale = 1;
         isPaused = false;
         gameOverPanel.SetActive(false);
-        //audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     void Update()
@@ -36,13 +37,18 @@ public class SceneManage : MonoBehaviour
         if (HeartManager.health <= 0)
         {
             Time.timeScale = 0;
+            if (!gameOver)
+            {
+                audioManager.PlaySFXByIndex(3); // game over sfx
+                gameOver = true;
+            }
             gameOverPanel.SetActive(true);
         }
     }
 
     public void Pause()
     {
-        //audioManager.PlaySFXByIndex(7);
+        audioManager.PlaySFXByIndex(13); // pause sfx
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -51,7 +57,7 @@ public class SceneManage : MonoBehaviour
     }
     public void Resume()
     {
-        //audioManager.PlaySFXByIndex(8);
+        audioManager.PlaySFXByIndex(12); // resume sfx
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -60,6 +66,7 @@ public class SceneManage : MonoBehaviour
     public void ChangeSceneWithDelay(string sceneName)
     {
         print("SceneChangeWDelay");
+        audioManager.PlaySFXByIndex(13); // home sfx
         StartCoroutine(Delay(sceneName));
     }
 
@@ -68,7 +75,6 @@ public class SceneManage : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f);
 
-        //audioManager.PlaySFXByIndex(7);
         yield return new WaitForSecondsRealtime(0.2f);
 
         SceneManager.LoadScene(sceneName);
@@ -79,6 +85,7 @@ public class SceneManage : MonoBehaviour
     public void ReloadSceneWithDelay()
     {
         print("SceneReloadWDelay");
+        audioManager.PlaySFXByIndex(12); // restart sfx
         StartCoroutine(Delaye());
     }
 
@@ -86,7 +93,6 @@ public class SceneManage : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.5f);
 
-        //audioManager.PlaySFXByIndex(8);
         yield return new WaitForSecondsRealtime(0.2f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

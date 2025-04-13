@@ -14,6 +14,7 @@ public class CloseCheckPoints : MonoBehaviour
 
     private float timeInsideTrigger = 0f;
     public float requiredStayTime = 1f;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class CloseCheckPoints : MonoBehaviour
         {
             Debug.Log("Cannot find points system");
         }
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -35,6 +37,7 @@ public class CloseCheckPoints : MonoBehaviour
             {
                 pointsSystem.AddPoints(pointsToAdd);
                 generator.PointsPopUpClose(collision.transform.position, pointsToAdd.ToString());
+                audioManager.PlaySFXByIndex(11); // ding x2 sfx
                 hasTriggered = true;
             }
         }
