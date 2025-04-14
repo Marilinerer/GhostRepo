@@ -25,6 +25,8 @@ public class TutorialCar : MonoBehaviour, IPossessable
     public LayerMask ignoreLayer;
     public BoxCollider2D parentBC;
     private AudioManager audioManager;
+    public Material outlineMat;
+    public Material defaultMat;
 
     void Start()
     {
@@ -39,10 +41,16 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = outlineMat;
+        }
+
         if (!partOneDone)
         {
             if (collision.gameObject.CompareTag("NPC") && parentBC.IsTouching(collision))
             {
+
                 tryAgain.SetActive(true);
                 audioManager.PlaySFXByIndex(6); // oof sfx
                 audioManager.PlaySFXByIndex(2); // car crash sfx
@@ -54,6 +62,8 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
             if (collision.gameObject.CompareTag("ObjCollider"))
             {
+                if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
+
                 audioManager.PlaySFXByIndex(1); // car hit sfx
                 tryAgain.SetActive(false);
                 sr.enabled = false;
@@ -213,5 +223,13 @@ public class TutorialCar : MonoBehaviour, IPossessable
         partThreeDone = true;
         audioManager.PlaySFXByIndex(10);
         stopMovement = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = defaultMat;
+        }
     }
 }

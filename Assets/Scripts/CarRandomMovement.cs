@@ -22,6 +22,8 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
     public bool isGameOver = false;
     private HeartManager heartManager;
     private AudioManager audioManager;
+    public Material outlineMat;
+    public Material defaultMat;
 
     void Start()
     {
@@ -141,6 +143,11 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = outlineMat;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -149,6 +156,11 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         if (collision.gameObject.CompareTag("ObjRadius"))
         {
             StartCoroutine(DelayResume(0.5f));
+        }
+
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = defaultMat;
         }
     }
 

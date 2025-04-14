@@ -112,6 +112,8 @@ MonoBehaviour:
   parentBC: {fileID: 8495048107528242955}
   isGameOver: 0
   applySineMovement: 0
+  outlineMat: {fileID: 2100000, guid: 596cbfa499bc5e842b473b21db4fc081, type: 2}
+  defaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &8495048107528242955
 BoxCollider2D:
   m_ObjectHideFlags: 0

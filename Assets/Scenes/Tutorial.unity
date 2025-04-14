@@ -1452,11 +1452,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4172266695022306018, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5343429
+      value: -1.64
       objectReference: {fileID: 0}
     - target: {fileID: 4172266695022306018, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5884333
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 4172266695022306018, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1493,6 +1493,14 @@ PrefabInstance:
     - target: {fileID: 4373258099100528741, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
       propertyPath: m_Name
       value: Fire hydrant holder (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692083269439835397, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.21464586
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692083269439835397, guid: 5d29402e659cc8c459e91c7007be6eeb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15346134
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7256,7 +7264,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.7744863, y: 0.008667439}
+  m_Offset: {x: -0.47851044, y: 0.008667439}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7267,7 +7275,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5619426, y: 1.0173349}
+  m_Size: {x: 0.33118153, y: 0.34093398}
   m_EdgeRadius: 0
 --- !u!114 &5704354628407112641
 MonoBehaviour:
@@ -7352,7 +7360,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.010033183}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7363,7 +7371,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.69900763, y: 0.37794888}
   m_EdgeRadius: 0
 --- !u!114 &8495048107621549503
 MonoBehaviour:
@@ -7387,8 +7395,10 @@ MonoBehaviour:
   isPossessed: 0
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   parentBC: {fileID: 8495048107621549502}
+  outlineMat: {fileID: 2100000, guid: 596cbfa499bc5e842b473b21db4fc081, type: 2}
+  defaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!95 &8495048107621549504
 Animator:
   serializedVersion: 5

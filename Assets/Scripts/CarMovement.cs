@@ -25,6 +25,8 @@ public class CarMovement : MonoBehaviour, IPossessable
     private float mag;
     private float freq;
     private AudioManager audioManager;
+    public Material outlineMat;
+    public Material defaultMat;
 
     void Start()
     {
@@ -164,6 +166,11 @@ public class CarMovement : MonoBehaviour, IPossessable
             //Debug.Log("destroyed, collided with " + collision.gameObject.name);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = outlineMat;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -172,6 +179,11 @@ public class CarMovement : MonoBehaviour, IPossessable
         if (collision.gameObject.CompareTag("ObjRadius") || collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(DelayResume(0.5f));
+        }
+
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = defaultMat;
         }
     }
 
