@@ -12,10 +12,11 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     public Material defaultMat;
     private SpriteRenderer sr;
     private AudioManager audioManager;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        sr.material = outlineMat;
+        sr.material = defaultMat;
         isPossessing = false;
         animator = GetComponent<Animator>();
         // radiusCol = GetComponent<Collider2D>();
@@ -28,8 +29,8 @@ public class ObjectPossess : MonoBehaviour, IPossessable
         if (isCooldown) return;
 
         audioManager.PlaySFXByIndex(7); // ghost possess sfx
-        sr.material = defaultMat;
         isPossessing = true;
+        sr.material = defaultMat;
         animator.SetBool("isPossessed", isPossessing);
         radiusCol.enabled = true;
 
@@ -42,6 +43,7 @@ public class ObjectPossess : MonoBehaviour, IPossessable
         isCooldown = true;
 
         isPossessing = false;
+        sr.material = defaultMat;
         animator.SetBool("isPossessed", isPossessing);
         radiusCol.enabled = false;
 
@@ -51,10 +53,9 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     private void ResetCooldown() // called by animation event at end of cooldown animation
     {
         isCooldown = false;
-
+        sr.material = defaultMat;
         isPossessing = false;
         animator.SetBool("isPossessed", isPossessing);
-        sr.material = outlineMat;
 
         Debug.Log("Cooldown reset and possessed animation stopped.");
     }
@@ -67,5 +68,21 @@ public class ObjectPossess : MonoBehaviour, IPossessable
     private void PlayLampSFX() // Played in animation event
     {
         audioManager.PlaySFXByIndex(5); // Lamp post sfx
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = outlineMat;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerDetector"))
+        {
+            sr.material = defaultMat;
+        }
     }
 }

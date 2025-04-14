@@ -6,16 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private Rigidbody2D rb;
+
     /*public float acceleration = 5f;
     public float deceleration = 5f;
-
-    private Rigidbody2D rb;
-    private Vector2 currentVelocity; // Smooth velocity to apply
+    
+    private Vector2 currentVelocity; // Smooth velocity to apply*/
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-    }*/
+    }
 
     private void Update()
     {
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        animator.SetFloat("xVelocity", Mathf.Abs(movement.x));
         /*float targetMoveX = 0f;
         float targetMoveY = 0f;
 
@@ -63,10 +68,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerWall"))
         {
-            LeanTween.scale(gameObject, new Vector3(.85f, .85f, 1), 0.2f).setEaseInOutExpo().setOnComplete(() =>
+            LeanTween.scale(gameObject, new Vector3(2.2f, 2.2f, 2.2f), 0.2f).setEaseInOutExpo().setOnComplete(() =>
             {
-                LeanTween.scale(gameObject, new Vector3(0.7f, 0.7f, 0.7f), 0.1f).setEaseInOutExpo();
+                LeanTween.scale(gameObject, new Vector3(2f, 2f, 2f), 0.1f).setEaseInOutExpo();
             });
         }
     }
+
 }

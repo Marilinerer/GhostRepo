@@ -11,6 +11,7 @@ TagManager:
   - ObjRadius
   - CarBorder
   - PlayerWall
+  - PlayerDetector
   layers:
   - Default
   - TransparentFX

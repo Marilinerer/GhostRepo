@@ -36,7 +36,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3517441848724855564}
+  - {fileID: 6849175175495015045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &747639962126255271
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0048037246}
+  m_Offset: {x: -0.017501056, y: -0.0073037893}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.215396}
+  m_Size: {x: 0.5949739, y: 0.32040322}
   m_EdgeRadius: 0
 --- !u!114 &5767068591126253992
 MonoBehaviour:
@@ -287,7 +287,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &2739909334852348499
+--- !u!1001 &5321921278511016922
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -337,31 +337,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271939417239457111, guid: b3110155511bb46489daf73d61a6147c, type: 3}
       propertyPath: m_Size.x
-      value: 0.5549351
+      value: 0.3058415
       objectReference: {fileID: 0}
     - target: {fileID: 3271939417239457111, guid: b3110155511bb46489daf73d61a6147c, type: 3}
       propertyPath: m_Size.y
-      value: 1.0161489
+      value: 0.27831584
       objectReference: {fileID: 0}
     - target: {fileID: 3271939417239457111, guid: b3110155511bb46489daf73d61a6147c, type: 3}
       propertyPath: m_Offset.x
-      value: 0.7957781
+      value: 0.42870525
       objectReference: {fileID: 0}
     - target: {fileID: 3271939417239457111, guid: b3110155511bb46489daf73d61a6147c, type: 3}
       propertyPath: m_Offset.y
-      value: 0.008074462
+      value: 0.0065558255
       objectReference: {fileID: 0}
     - target: {fileID: 8021798955329572191, guid: b3110155511bb46489daf73d61a6147c, type: 3}
       propertyPath: m_Name
-      value: CloseCheckPoints
+      value: CloseCheckPoints (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3110155511bb46489daf73d61a6147c, type: 3}
---- !u!4 &3517441848724855564 stripped
+--- !u!4 &6849175175495015045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1645621170590986591, guid: b3110155511bb46489daf73d61a6147c, type: 3}
-  m_PrefabInstance: {fileID: 2739909334852348499}
+  m_PrefabInstance: {fileID: 5321921278511016922}
   m_PrefabAsset: {fileID: 0}

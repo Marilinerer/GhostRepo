@@ -5,6 +5,12 @@ using UnityEngine;
 public class PossessDetect : MonoBehaviour
 {
     private IPossessable nearbyPossessable;
+    private ObjectPossess objPos;
+
+    private void Start()
+    {
+        objPos = FindAnyObjectByType<ObjectPossess>().GetComponent<ObjectPossess>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,12 +21,11 @@ public class PossessDetect : MonoBehaviour
             nearbyPossessable = possessable; // Store reference
         }
 
-        SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
+        /*SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            Material mat = sr.material;
-            mat.SetFloat("_OutlineThickness", 0.1f);
-        }
+            objPos.Outline();
+        }*/
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -32,12 +37,11 @@ public class PossessDetect : MonoBehaviour
             nearbyPossessable = null;
         }
 
-        SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
+        /*SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            Material mat = sr.material;
-            mat.SetFloat("_OutlineThickness", 0);
-        }
+            objPos.NoOutline();
+        }*/
 
     }
 
