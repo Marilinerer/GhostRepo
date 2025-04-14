@@ -6,18 +6,12 @@ using TMPro;
 
 public class PointsSystem : MonoBehaviour
 {
-    private static int totalPoints;
     public TextMeshProUGUI pointsText;
     public GameObject pointsHolder;
 
-    private void Start()
-    {
-        totalPoints = 0;
-    }
-
     private void Update()
     {
-        pointsText.text = totalPoints.ToString();
+        pointsText.text = ScoreManager.totalPoints.ToString();
     }
 
     public void AddPoints(int points)
@@ -26,7 +20,7 @@ public class PointsSystem : MonoBehaviour
         {
             LeanTween.scale(pointsHolder, new Vector3(1f, 1f, 1f), 0.2f).setEaseOutCubic();
         });
-        totalPoints += points;
-        Update();
+
+        ScoreManager.totalPoints += points;
     }
 }
