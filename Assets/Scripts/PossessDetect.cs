@@ -31,9 +31,14 @@ public class PossessDetect : MonoBehaviour
         {
             nearbyPossessable = null;
         }
+
         SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
-        Material mat = sr.material;
-        mat.SetFloat("_OutlineThickness", 0);
+        if (sr != null)
+        {
+            Material mat = sr.material;
+            mat.SetFloat("_OutlineThickness", 0);
+        }
+
     }
 
     void Update()
