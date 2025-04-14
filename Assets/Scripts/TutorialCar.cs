@@ -55,7 +55,6 @@ public class TutorialCar : MonoBehaviour, IPossessable
             if (collision.gameObject.CompareTag("ObjCollider"))
             {
                 audioManager.PlaySFXByIndex(1); // car hit sfx
-                partOneDone = true;
                 tryAgain.SetActive(false);
                 sr.enabled = false;
 
@@ -78,15 +77,14 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
             if (collision.gameObject.CompareTag("ObjRadius"))
             {
-                if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
-
-                audioManager.PlaySFXByIndex(0); // car horn sfx
+                stopMovement = true;
                 rb.velocity = Vector2.zero;
-                partTwoDone = true;
+                Debug.Log("Velocity after stop: " + rb.velocity);
+                audioManager.PlaySFXByIndex(0); // car horn sfx
                 tryAgain.SetActive(false);
                 sr.enabled = true;
 
-                StartCoroutine(Delay4(2));
+                StartCoroutine(Delay4(4));
             }
         }
 
@@ -146,11 +144,12 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
             rb.velocity = v;
 
-            if (stopMovement)
-            {
-                sr.enabled = true;
-                rb.velocity = Vector2.zero;
-            }
+        }
+
+        if (stopMovement)
+        {
+            sr.enabled = true;
+            rb.velocity = Vector2.zero;
         }
 
         if (gameObject.transform.position == new Vector3(-11, -3.4f, transform.position.z))
@@ -169,11 +168,14 @@ public class TutorialCar : MonoBehaviour, IPossessable
     {
         yield return new WaitForSeconds(times);
 
+        partOneDone = true;
+        audioManager.PlaySFXByIndex(10);
         sr.enabled = true;
         transform.position = new Vector2(-11, -4);
         sr.flipX = false;
-        rb.velocity = new Vector2(npc.carSpeed, 0);
+        movementDirection = new Vector2(1, 0);
         person.transform.position = new Vector2(0, -3.4f);
+
     }
     private IEnumerator Delay2(float times)
     {
@@ -197,8 +199,11 @@ public class TutorialCar : MonoBehaviour, IPossessable
     {
         yield return new WaitForSeconds(times);
 
+        partTwoDone = true;
+        audioManager.PlaySFXByIndex(10);
         transform.position = new Vector2(-11, -4);
-        //rb.velocity = new Vector2(npc.carSpeed, 0);
+        rb.velocity = new Vector2(npc.carSpeed, 0);
+        stopMovement = false;
     }
 
     private IEnumerator Delay5(float times)
@@ -206,6 +211,7 @@ public class TutorialCar : MonoBehaviour, IPossessable
         yield return new WaitForSeconds(times);
 
         partThreeDone = true;
+        audioManager.PlaySFXByIndex(10);
         stopMovement = true;
     }
 }

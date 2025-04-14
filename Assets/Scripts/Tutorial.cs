@@ -49,7 +49,6 @@ public class Tutorial : MonoBehaviour
             good.SetActive(true);
             button.SetActive(true);
             lives.SetActive(true);
-            LeanTween.scale(button, new Vector3(2.3f, 2.3f, 1), 2).setLoopPingPong();
         }
     }
 
