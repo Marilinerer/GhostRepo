@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8495048107528242955}
   - component: {fileID: 5767068591126253992}
   - component: {fileID: -6641621875016748883}
+  - component: {fileID: 1131277973161566158}
   m_Layer: 0
   m_Name: CrazyCarRight
   m_TagString: Possessable
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.509192, y: 0.98848754, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3517441848724855564}
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.64829844, g: 0.3525374, b: 0.72327036, a: 1}
+  m_Sprite: {fileID: -1939321137, guid: 922279819e5e2064f821e180e7bdbc7c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,10 +104,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 747639962126255271}
   movementDirection: {x: 1, y: 0}
+  isPossessed: 0
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 256
   parentBC: {fileID: 8495048107528242955}
+  isGameOver: 0
   applySineMovement: 1
 --- !u!61 &8495048107528242955
 BoxCollider2D:
@@ -140,18 +143,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000000029802322, y: 0.02626663}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.62, y: 0.35}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5057154, y: 0.1904729}
   m_EdgeRadius: 0
 --- !u!114 &5767068591126253992
 MonoBehaviour:
@@ -194,6 +197,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &1131277973161566158
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458484007486269265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6935ca961fb253c4480997cacecf80a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2739909334852348499
 PrefabInstance:
   m_ObjectHideFlags: 0
