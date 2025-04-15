@@ -12,6 +12,7 @@ TagManager:
   - CarBorder
   - PlayerWall
   - PlayerDetector
+  - Cars
   layers:
   - Default
   - TransparentFX

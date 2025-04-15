@@ -121,6 +121,18 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
             heartManager.LoseHeart();
         }
 
+        if (collision.gameObject.CompareTag("Cars"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            NPCCounter.Instance.CarCrashed();
+        }
+
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            stopMovement = true;
+        }
+
         if (collision.gameObject.CompareTag("ObjCollider"))
         {
             if (((1 << collision.gameObject.layer) & ignoreLayer.value) != 0) return;
@@ -161,6 +173,11 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         if (collision.gameObject.CompareTag("PlayerDetector"))
         {
             sr.material = defaultMat;
+        }
+
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            stopMovement = false;
         }
     }
 
