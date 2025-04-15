@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8495048107528242955}
   - component: {fileID: 5767068591126253992}
   - component: {fileID: -6641621875016748883}
-  - component: {fileID: 6059308494310360528}
   - component: {fileID: 3429475097171139465}
   m_Layer: 0
   m_Name: CarRight
@@ -200,74 +199,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &6059308494310360528
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458484007486269265}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.62, y: 0.37}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.003336206, y: 0.15936078}
-      - {x: -0.03729883, y: 0.18995418}
-      - {x: -0.08077056, y: 0.1515514}
-      - {x: -0.09948418, y: 0.124493696}
-      - {x: -0.1206035, y: 0.08252683}
-      - {x: -0.23593456, y: 0.080097504}
-      - {x: -0.31116423, y: -0.019657075}
-      - {x: -0.31, y: -0.111689776}
-      - {x: -0.25292304, y: -0.13840291}
-      - {x: -0.22235996, y: -0.1889837}
-      - {x: -0.14704087, y: -0.18154527}
-      - {x: -0.11523482, y: -0.12923628}
-      - {x: 0.06489277, y: -0.13166994}
-      - {x: 0.06381348, y: -0.15148321}
-      - {x: 0.09834993, y: -0.18787909}
-      - {x: 0.16794612, y: -0.18712685}
-      - {x: 0.20744105, y: -0.128493}
-      - {x: 0.24495754, y: -0.12597166}
-      - {x: 0.30070484, y: -0.08939268}
-      - {x: 0.3000545, y: 0.028974786}
-      - {x: 0.2518193, y: 0.07428585}
-      - {x: 0.15596592, y: 0.077901155}
-      - {x: 0.07908115, y: 0.15578665}
-  m_UseDelaunayMesh: 0
 --- !u!95 &3429475097171139465
 Animator:
   serializedVersion: 5

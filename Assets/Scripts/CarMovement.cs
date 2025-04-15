@@ -28,6 +28,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     public Material outlineMat;
     public Material defaultMat;
 
+
     void Start()
     {
         npc = GetComponent<NPC>();
@@ -70,14 +71,14 @@ public class CarMovement : MonoBehaviour, IPossessable
                     //StartCooldown();
                 }*/
 
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     sr.flipX = true;
                     v.x = -npc.carSpeed; // Move left
                     isPossessed = false;
                     //Debug.Log("Possessed, changed to left");
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+                else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     sr.flipX = false;
                     v.x = npc.carSpeed; // Move right
