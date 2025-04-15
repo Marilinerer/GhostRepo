@@ -142,6 +142,17 @@ public class CarMovement : MonoBehaviour, IPossessable
             heartManager.LoseHeart();
 
         }
+        if (collision.gameObject.CompareTag("Cars"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            NPCCounter.Instance.CarCrashed();
+        }
+
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            stopMovement = true;
+        }
 
         if (collision.gameObject.CompareTag("ObjCollider") && parentBC.IsTouching(collision))
         {
@@ -184,6 +195,12 @@ public class CarMovement : MonoBehaviour, IPossessable
         if (collision.gameObject.CompareTag("PlayerDetector"))
         {
             sr.material = defaultMat;
+        }
+
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            stopMovement = false;
+
         }
     }
 

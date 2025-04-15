@@ -38,9 +38,9 @@ public class NPCCounter : MonoBehaviour
     public void CarCrashed()
     {
         carCrashCounter++; // Increase counter
-        Debug.Log("CarCrashed: " + npcCounter);
+        Debug.Log("CarCrashed: " + carCrashCounter);
 
         // Update UI text
-        npcCountText.text = npcCounter.ToString();
+        npcCountText.text = carCrashCounter.ToString();
     }
 }
