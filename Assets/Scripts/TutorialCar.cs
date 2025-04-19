@@ -238,11 +238,16 @@ public class TutorialCar : MonoBehaviour, IPossessable
         if (!partOneDone)
         {
             transform.position = new Vector3(11, -0.5f, transform.position.z);
+            sr.flipX = true;
+            rb.velocity = new Vector2(-npc.carSpeed, 0);
+
         }
 
         else if (partOneDone || partTwoDone)
         {
             transform.position = new Vector3(-11, -3.4f, transform.position.z);
+            sr.flipX = false;
+            rb.velocity = new Vector2(npc.carSpeed, 0);
         }
     }
 }
