@@ -147,17 +147,12 @@ public class CarMovement : MonoBehaviour, IPossessable
             StartCoroutine(DelayDestroy(0.3f));
         }
 
-        if (collision.gameObject.CompareTag("Cars"))
+        if (collision.gameObject.CompareTag("Cars") && parentBC.IsTouching(collision))
         {
             NPCCounter.Instance.CarCrashed();
             animator.SetBool("isExploding", true);
             StartCoroutine(DelayDestroy(0.8f));
             audioManager.PlaySFXByIndex(2);
-        }
-
-        if (collision.gameObject.CompareTag("Checkpoint"))
-        {
-            stopMovement = true;
         }
 
         if (collision.gameObject.CompareTag("ObjCollider") && parentBC.IsTouching(collision))

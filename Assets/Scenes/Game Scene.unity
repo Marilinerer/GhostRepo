@@ -2113,9 +2113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab: {fileID: 7458484007486269265, guid: b40f52e5aa29e8249aa3f20470217821, type: 3}
-  minSpawnInterval: 5
-  maxSpawnInterval: 10
-  whenToActivate: 60
+  minSpawnInterval: 8
+  maxSpawnInterval: 20
+  whenToActivate: 45
   spawnCar: 0
 --- !u!1 &1012151803
 GameObject:
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: fda3c8b020d64b147a45c011a8cb88b3, type: 3}
   minSpawnInterval: 10
   maxSpawnInterval: 17
-  whenToActivate: 100
+  whenToActivate: 75
   spawnCar: 0
 --- !u!1 &1126299870
 GameObject:
@@ -3248,9 +3248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab: {fileID: 7458484007486269265, guid: 4047be877b4caf1468a326d1aae5abdb, type: 3}
-  minSpawnInterval: 5
-  maxSpawnInterval: 10
-  whenToActivate: 60
+  minSpawnInterval: 8
+  maxSpawnInterval: 20
+  whenToActivate: 45
   spawnCar: 0
 --- !u!1001 &1396606111
 PrefabInstance:
@@ -3360,7 +3360,7 @@ MonoBehaviour:
   carPrefab: {fileID: 7458484007486269265, guid: 172a22ffaefb46c4e9b254bf6b384946, type: 3}
   minSpawnInterval: 8
   maxSpawnInterval: 15
-  whenToActivate: 100
+  whenToActivate: 75
   spawnCar: 0
 --- !u!1 &1467928267
 GameObject:

@@ -132,10 +132,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
             StartCoroutine(DelayDestroy(0.5f));
         }
 
-        if (collision.gameObject.CompareTag("Checkpoint"))
-        {
-            stopMovement = true;
-        }
+
 
         if (collision.gameObject.CompareTag("ObjCollider"))
         {
