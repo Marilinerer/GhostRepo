@@ -27,6 +27,7 @@ public class CarMovement : MonoBehaviour, IPossessable
     private AudioManager audioManager;
     public Material outlineMat;
     public Material defaultMat;
+    private Animator animator;
 
 
     void Start()
@@ -40,6 +41,7 @@ public class CarMovement : MonoBehaviour, IPossessable
         freq = Random.Range(2f, 13f);
         heartManager = FindObjectOfType<HeartManager>().GetComponent<HeartManager>();
         audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -137,17 +139,20 @@ public class CarMovement : MonoBehaviour, IPossessable
             audioManager.PlaySFXByIndex(6); // oof sfx
             audioManager.PlaySFXByIndex(2); // car crash sfx
             print("health down");
-            Destroy(collision.gameObject);
             NPCCounter.Instance.CarCrashed();
             HeartManager.health--;
             heartManager.LoseHeart();
+            animator.SetBool("isExploding", true);
+            Destroy(collision.gameObject);
+            StartCoroutine(DelayDestroy(0.3f));
         }
 
         if (collision.gameObject.CompareTag("Cars"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
             NPCCounter.Instance.CarCrashed();
+            animator.SetBool("isExploding", true);
+            StartCoroutine(DelayDestroy(0.8f));
+            audioManager.PlaySFXByIndex(2);
         }
 
         if (collision.gameObject.CompareTag("Checkpoint"))
@@ -163,7 +168,8 @@ public class CarMovement : MonoBehaviour, IPossessable
             //Debug.Log("destroyed, collided with " + collision.gameObject.name);
             audioManager.PlaySFXByIndex(1); // car hit sfx
             NPCCounter.Instance.CarCrashed();
-            StartCoroutine(DelayDestroy(0.5f));
+            animator.SetBool("isExploding", true);
+            StartCoroutine(DelayDestroy(0.3f));
 
         }
 
@@ -209,6 +215,7 @@ public class CarMovement : MonoBehaviour, IPossessable
         yield return new WaitForSeconds(delay);
         Destroy(gameObject);
     }
+
 
     private IEnumerator DelayResume(float delay)
     {

@@ -181,7 +181,7 @@ public class TutorialCar : MonoBehaviour, IPossessable
         partOneDone = true;
         audioManager.PlaySFXByIndex(10);
         sr.enabled = true;
-        transform.position = new Vector2(-11, -4);
+        transform.position = new Vector2(-11, -3.4f);
         sr.flipX = false;
         movementDirection = new Vector2(1, 0);
         person.transform.position = new Vector2(0, -3.4f);
@@ -201,7 +201,7 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
         person.SetActive(true);
         sr.enabled = true;
-        transform.position = new Vector2(-11, -4);
+        transform.position = new Vector2(-11, -3.4f);
 
     }
 
@@ -211,7 +211,7 @@ public class TutorialCar : MonoBehaviour, IPossessable
 
         partTwoDone = true;
         audioManager.PlaySFXByIndex(10);
-        transform.position = new Vector2(-11, -4);
+        transform.position = new Vector2(-11, -3.4f);
         rb.velocity = new Vector2(npc.carSpeed, 0);
         stopMovement = false;
     }
@@ -230,6 +230,19 @@ public class TutorialCar : MonoBehaviour, IPossessable
         if (collision.gameObject.CompareTag("PlayerDetector"))
         {
             sr.material = defaultMat;
+        }
+    }
+
+    public void RespawnCar()
+    {
+        if (!partOneDone)
+        {
+            transform.position = new Vector3(11, -0.5f, transform.position.z);
+        }
+
+        else if (partOneDone || partTwoDone)
+        {
+            transform.position = new Vector3(-11, -3.4f, transform.position.z);
         }
     }
 }

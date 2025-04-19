@@ -24,6 +24,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
     private AudioManager audioManager;
     public Material outlineMat;
     public Material defaultMat;
+    private Animator animator;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
         rb = GetComponent<Rigidbody2D>();
         heartManager = FindObjectOfType<HeartManager>().GetComponent<HeartManager>();
         audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -52,14 +54,14 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
                     //StartCooldown();
                 }*/
 
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     sr.flipX = true;
                     rb.velocity = movementDirection; // Move left
                     isPossessed = false;
                     //Debug.Log("Possessed, changed to left");
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+                else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     sr.flipX = false;
                     rb.velocity = movementDirection2; // Move right
@@ -119,13 +121,15 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
             Destroy(collision.gameObject);
             HeartManager.health--;
             heartManager.LoseHeart();
+            animator.SetBool("isExploding", true);
+            StartCoroutine(DelayDestroy(0.5f));
         }
 
         if (collision.gameObject.CompareTag("Cars"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
             NPCCounter.Instance.CarCrashed();
+            animator.SetBool("isExploding", true);
+            StartCoroutine(DelayDestroy(0.5f));
         }
 
         if (collision.gameObject.CompareTag("Checkpoint"))
@@ -141,6 +145,7 @@ public class CarRandomMovement : MonoBehaviour, IPossessable
             //Debug.Log("destroyed, collided with " + collision.gameObject.name);
             audioManager.PlaySFXByIndex(1); // car hit sfx
             NPCCounter.Instance.CarCrashed();
+            animator.SetBool("isExploding", true);
             StartCoroutine(DelayDestroy(0.5f));
 
         }
